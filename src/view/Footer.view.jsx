@@ -4,10 +4,10 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <Box>
-      <a href="https://tovana.io" target="_blank" rel="noopener noreferrer">
+      {/* <a href="https://tovana.io" target="_blank" rel="noopener noreferrer">
         tovana.io
       </a>
-      &nbsp; learn and thrive &nbsp;
+      &nbsp; learn and thrive &nbsp; */}
     </Box>
   );
 };

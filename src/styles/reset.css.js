@@ -40,18 +40,27 @@ export const GlobalStyles = createGlobalStyle`
   }
   }
 
+  input::placeholder, :valid {
+    font-size: large;
+    padding-left: 2rem;
+  }
+
   h1 {
-    font-size: 3rem;
+    font-size: 8rem;
     font-weight: bold;
     color: #1114e7;
     /* align-content: center; */
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: bold;
     color: white
   }
+
+  /* h3 {
+    text-align: center;
+  } */
 
   span {
     color: midnightblue;

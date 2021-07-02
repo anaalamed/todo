@@ -3,38 +3,21 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTodoAsync, fetchTodos } from '../../state/slices/todos.slice'
+import AddTodoForm from '../AddTodoForm.view'
 
 const Todos = () => {
-    const [value, setValue] = useState("");
     const { todo } = useSelector(state => state.todos);
     const dispatch = useDispatch();
 
-    const onSubmitForm = (event) => {
-        event.preventDefault();
-        dispatch(addTodoAsync({ title: value }));
-        setValue('');
-    };
-
-    // fetch every time after change 
+    // fetch every time after change ?? 
     useEffect(() => {
         dispatch(fetchTodos());
-    });
+    }, []);
 
     return (
         <Main>
             <Title>ToDo List</Title>
-
-            <form onSubmit={onSubmitForm}>
-                <label>ToDo:
-                <input
-                        type="text"
-                        placeholder="write here to add toDo"
-                        onChange={(event) => setValue(event.target.value)}
-                        value={value}
-                    ></input>
-                </label>
-                <button type="submit" >Add</button>
-            </form>
+            <AddTodoForm />
 
             <h2>ToDo</h2>
             <Section>
@@ -50,7 +33,6 @@ const Todos = () => {
                 )}
             </Section>
         </Main>
-
     )
 }
 
@@ -59,7 +41,7 @@ export default Todos;
 const Main = styled.main`
   height: 100%;
   width: 100%;
-  padding: 5rem 0;
+  padding: 7rem 0;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -74,8 +56,9 @@ const Section = styled.section`
     margin: 1rem;
     border: 3px solid midnightblue;
     background-color: moccasin;
-    /* padding: 1rem; */
-    min-height: 5rem;
+    padding: 1rem;
+    min-height: 10rem;
+    border-radius: 1rem;
 `;
 
 const Title = styled.h1`

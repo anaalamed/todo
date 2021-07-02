@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { FcTodoList } from 'react-icons/fc';
 
 const TopBar = () => {
   return (
     <Header>
-      <SLink to="/">Home</SLink>
-      <SLink to="/signin">Sign In</SLink>
-      <SLink to="/todo">ToDo</SLink>
+      <div>
+        <SLink to="/">Home</SLink>
+        <SLink to="/signin">Sign In</SLink>
+        <SLink to="/todo">ToDo</SLink>
+      </div>
+
+      <Logo src="logo.jpeg"></Logo>
     </Header>
   );
 };
@@ -19,13 +24,15 @@ const Header = styled.header`
   position: fixed;
   left: 0;
   right: 0;
-  padding: 2rem;
+  padding: 0 3rem;
   display: flex;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
 `;
 const SLink = styled(Link)`
   color: #1114e7;
-  font-size: large;
+  font-size: 3rem;
   font-weight: bold;
   text-decoration: none;
   margin-right: 2rem;
@@ -35,6 +42,8 @@ const SLink = styled(Link)`
   }
 `;
 const Logo = styled.img`
-  width: 3rem;
+  width: 10rem;
   cursor: pointer;
+  border-radius: 1rem;
+  /* margin-left: 50%; */
 `;

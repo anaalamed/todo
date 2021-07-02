@@ -116,7 +116,7 @@ export const {addTodo, toogleComplete, deleteTodo} = todos_slice.actions;
 const { fetch_started, fetch_failed, data_ready } = todos_slice.actions;
 export const fetchTodos = () => async (dispatch) => {
   try {
-    dispatch(fetch_started());
+    // dispatch(fetch_started());
     const data = await getTodos();
     if (!data) throw new Error("Quote data came back with no results");
     dispatch(data_ready(data));
