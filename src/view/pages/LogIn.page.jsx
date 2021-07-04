@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SignIn = () => {
+const LogIn = () => {
   return (
     <Main>
       <Title>Log In</Title>
@@ -12,6 +12,7 @@ const SignIn = () => {
           name="email"
           placeholder="Email"
         ></Input>
+        <br></br>
 
         <label>Password: </label>
         <Input
@@ -19,17 +20,17 @@ const SignIn = () => {
           type='password'
           placeholder="Password"
         ></Input>
+
+        <Button>Log In</Button>
+
       </Form>
     </Main>
   )
 }
 
-export default SignIn;
+export default LogIn;
 
 const Main = styled.div`
-  /* margin-bottom: 5rem; */
-  /* line-height: 1.15; */
-
   height: 100%;
   width: 100%;
   padding: 7rem 0;
@@ -38,13 +39,10 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(54,25,218);
-  background: linear-gradient(0deg, rgba(54,25,218,1) 18%, rgba(253,187,45,1) 100%);
 `;
 
 const Title = styled.h1`
   margin-bottom: 1rem;
-  /* color: #1114e7; */
   line-height: 1.15;
   font-size: 3rem;
   text-align: center;
@@ -55,11 +53,12 @@ const Title = styled.h1`
 `;
 
 const Form = styled.form`
+  background: lightgray;
   padding: 4rem;
   border-radius: 1rem;
   border: 3px solid midnightblue;
   &:hover {
-        filter: brightness(150%);
+        filter: brightness(110%);
         transition: 0.1s;
     }
 `;

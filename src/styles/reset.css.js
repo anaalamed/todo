@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
   body{
     /* border:deeppink 1px solid; */
     font-size:1.6rem;
+    background: linear-gradient(336deg, rgba(54,25,218,1) 18%, rgba(253,187,45,1) 80%);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
@@ -16,12 +17,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   img {
-    width: 100%;
+    width: 70%;
+    /* margin: 0 auto; */
   }
 
   label {
     font-size: 2rem;
-    color: white;
+    color: midnightblue;
     font-weight: bold;
   }
 
@@ -36,13 +38,13 @@ export const GlobalStyles = createGlobalStyle`
   &:hover {
     /* filter: brightness(200%)  */
     /* background: white; */
-    filter: brightness(150%);
+    /* filter: brightness(150%); */
   }
   }
 
   input::placeholder, :valid {
     font-size: large;
-    padding-left: 2rem;
+    padding-left: 1rem;
   }
 
   h1 {

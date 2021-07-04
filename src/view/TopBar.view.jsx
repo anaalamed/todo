@@ -8,11 +8,14 @@ const TopBar = () => {
     <Header>
       <div>
         <SLink to="/">Home</SLink>
-        <SLink to="/signin">Sign In</SLink>
         <SLink to="/todo">ToDo</SLink>
       </div>
-
-      <Logo src="logo.jpeg"></Logo>
+      <Section>
+        <h3>Hello, guest</h3>
+        <SLink to="/signin">Sign Up</SLink>
+        <SLink to="/login">Log In</SLink>
+        <Logo src="logo.jpeg"></Logo>
+      </Section>
     </Header>
   );
 };
@@ -46,4 +49,10 @@ const Logo = styled.img`
   cursor: pointer;
   border-radius: 1rem;
   /* margin-left: 50%; */
+`;
+
+const Section = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;

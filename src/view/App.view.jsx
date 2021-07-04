@@ -4,7 +4,8 @@ import { Route, Switch } from "react-router-dom";
 import Footer from "./Footer.view";
 import TopBar from "./TopBar.view";
 import Home from "./pages/Home.page";
-import SignIn from "./pages/SignIn.page";
+import SignUp from "./pages/SignUp.page";
+import LogIn from "./pages/LogIn.page";
 import Todos from "./pages/Todos.page";
 
 
@@ -15,7 +16,8 @@ const App = () => {
 
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/signin" exact component={SignIn} />
+        <Route path="/signin" exact component={SignUp} />
+        <Route path="/login" exact component={LogIn} />
         <Route path="/todo" exact component={Todos} />
       </Switch>
 

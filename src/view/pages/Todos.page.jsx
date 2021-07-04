@@ -47,8 +47,8 @@ const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(54,25,218);
-  background: linear-gradient(0deg, rgba(54,25,218,1) 18%, rgba(253,187,45,1) 100%);
+  /* background: rgb(54,25,218); */
+  /* background: linear-gradient(0deg, rgba(54,25,218,1) 18%, rgba(253,187,45,1) 100%); */
 `;
 
 const Section = styled.section`
