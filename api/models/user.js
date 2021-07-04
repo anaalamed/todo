@@ -12,6 +12,17 @@ const userSchema = new mongoose.Schema({
         required: true,
         minlength: 6
     },
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
+    }, 
+    country: {
+        type: String
+    }
 });
  const User = mongoose.model('User', userSchema);
 

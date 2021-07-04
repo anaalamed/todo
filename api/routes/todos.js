@@ -27,7 +27,7 @@ router.patch('/api/todos/:id', async (req, res) => {
 	const todo = await Todo.findOne({_id:id});
 	todo.completed = completed;
 	await todo.save();
-	res.json(todo);
+	res.json({message: 'todo updated successfuly'});
 });
 
 router.delete('/api/todos/:id', async (req, res) => {
