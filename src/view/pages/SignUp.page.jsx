@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useForm } from 'react-hook-form';
+import { useDispatch } from "react-redux";
 import countries from '../../data/countries';
+import { registration } from '../../state/slices/users.slice'
+import { Redirect } from "react-router-dom";
 
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [redirect, setRedirect] = useState(false);
 
   const email_regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})&/;
@@ -60,7 +65,10 @@ const SignUp = () => {
     return generate(field_name);
   };
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(registration(data));
+  }
 
   return (
     <Main>
@@ -132,8 +140,11 @@ const SignUp = () => {
           name="password"
           type='password'
           placeholder="Password"
-          {...register('password', { required: true, minLength: 8, pattern: strongRegex })}
-          error_styled={errors.password}
+          {...register('password', {
+            required: true, minLength: 8,
+            //  pattern: strongRegex
+          })}
+        // error_styled={errors.password}
         ></Input>
         <Error show={errors.password}>
           {get_error_msg(errors, error_messages, "password")}
@@ -154,21 +165,12 @@ const SignUp = () => {
         </Error>
         <br></br>
 
-        {/* <label>Description: </label>
-        <Textarea
-          name="description"
-          placeholder="About..."
-          rows="4"
-          {...register('description', { required: true, minLength: 10 })}
-          error_styled={errors.description}
-        ></Textarea>
-        <Error show={errors.description}>
-          {get_error_msg(errors, error_messages, "description")}
-        </Error>
-        <br></br> */}
-
         <Button>Sign Up</Button>
       </Form>
+
+      <p>Already have an account?</p>
+      <button onClick={() => setRedirect(true)}>Log In</button>
+      {redirect ? (<Redirect to="/login" />) : null}
     </Main>
   )
 }
@@ -198,7 +200,6 @@ const Title = styled.h1`
 `;
 
 const Form = styled.form`
-  background: lightgray;
   padding: 4rem;
   border-radius: 1rem;
   border: 3px solid midnightblue;
@@ -243,6 +244,7 @@ const Select = styled.select`
   color: #aaa;
   font-family: Arial;
 `;
+
 const Textarea = styled.textarea`
   background: ${({ error_styled }) => (error_styled ? "pink" : "white")};
   border-radius: 1rem;

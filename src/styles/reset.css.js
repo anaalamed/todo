@@ -77,4 +77,10 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0.3rem;
     border-radius: 1rem;
   }
+
+  form { 
+    background: #aae2fc;
+    border-radius: 1rem;
+
+  }
 `;

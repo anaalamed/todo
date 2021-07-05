@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FcTodoList } from 'react-icons/fc';
+import { useSelector } from "react-redux";
 
 const TopBar = () => {
+  const { firstName } = useSelector(state => state.users.me);
+  let user = firstName ? firstName : 'guest';
   return (
     <Header>
       <div>
@@ -11,15 +14,21 @@ const TopBar = () => {
         <SLink to="/todo">ToDo</SLink>
       </div>
       <Section>
-        <h3>Hello, guest</h3>
-        <SLink to="/signin">Sign Up</SLink>
+        <SLink to="/signup">Sign Up</SLink>
         <SLink to="/login">Log In</SLink>
+        <Hello to="/me">Hi, {user}</Hello>
         <Logo src="logo.jpeg"></Logo>
       </Section>
     </Header>
   );
 };
 export default TopBar;
+
+const Section = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 const Header = styled.header`
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
@@ -33,6 +42,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
 `;
+
 const SLink = styled(Link)`
   color: #1114e7;
   font-size: 3rem;
@@ -44,6 +54,19 @@ const SLink = styled(Link)`
     /* background: red; */
   }
 `;
+
+const Hello = styled(Link)`
+  color: #aae2fc;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin-right: 1rem;
+  :hover {
+    text-decoration: underline;
+    /* background: red; */
+  }
+`;
+
 const Logo = styled.img`
   width: 10rem;
   cursor: pointer;
@@ -51,8 +74,4 @@ const Logo = styled.img`
   /* margin-left: 50%; */
 `;
 
-const Section = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+

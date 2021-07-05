@@ -39,9 +39,8 @@ const Main = styled.div`
     width: 80%;
     padding: 3rem 0;
     margin: 0 auto;
-    /* background-color: #98c3e9; */
     /* padding-left: 20%; */
-  border: 3px solid midnightblue;
+  /* border: 3px solid midnightblue; */
   border-radius: 1rem;
 `;
 

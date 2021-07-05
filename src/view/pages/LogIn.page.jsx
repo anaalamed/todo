@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useForm } from 'react-hook-form';
+import { useDispatch } from "react-redux";
+import { login } from '../../state/slices/users.slice'
+import { Redirect } from "react-router-dom";
+
 
 const LogIn = () => {
+  const dispatch = useDispatch();
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const [redirect, setRedirect] = useState(false);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(login(data));
+  }
+
   return (
     <Main>
       <Title>Log In</Title>
 
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <label>Email: </label>
         <Input
           name="email"
           placeholder="Email"
+          {...register('email', { required: true, minLength: 8 })}
         ></Input>
         <br></br>
 
@@ -19,11 +34,16 @@ const LogIn = () => {
           name="password"
           type='password'
           placeholder="Password"
+          {...register('password', { required: true, minLength: 6 })}
         ></Input>
 
         <Button>Log In</Button>
 
       </Form>
+
+      <p>No account yet?</p>
+      <button onClick={() => setRedirect(true)}>Sign Up</button>
+      {redirect ? (<Redirect to="/signup" />) : null}
     </Main>
   )
 }
@@ -53,7 +73,6 @@ const Title = styled.h1`
 `;
 
 const Form = styled.form`
-  background: lightgray;
   padding: 4rem;
   border-radius: 1rem;
   border: 3px solid midnightblue;
