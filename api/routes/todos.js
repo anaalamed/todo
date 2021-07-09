@@ -1,11 +1,13 @@
 const {Router} = require('express');
 const { json } = require('body-parser');
 const Todo = require('../models/todo'); // mongoose schema
+const {checkUsersHeaders, checkExistingUser} = require('../middlewares/auth');
 
 const router = Router(); 
 
-router.get('/api/todos', (req, res) => {
-	Todo.find({ })
+router.get('/api/todos', checkUsersHeaders, checkExistingUser, (req, res) => {
+	const id = req.user._id;
+	Todo.find({user: id})
 	.then((data) => {
 		res.json(data);
 	})
@@ -15,7 +17,7 @@ router.get('/api/todos', (req, res) => {
 });
 
 router.post('/api/todos', (req, res) => {
-	const todo = { title: req.body.title, id: Date.now(), completed: false };
+	const todo = { title: req.body.title, id: Date.now(), completed: false, user: req.body.user };
     Todo.create(todo);
 	res.json({message: 'todo added successfuly'});
 });

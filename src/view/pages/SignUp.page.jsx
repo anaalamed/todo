@@ -11,6 +11,8 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [redirect, setRedirect] = useState(false);
+  const [redirectLog, setRedirectLog] = useState(false);
+
 
   const email_regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})&/;
@@ -68,6 +70,7 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log(data);
     dispatch(registration(data));
+    setRedirectLog(true);
   }
 
   return (
@@ -171,6 +174,7 @@ const SignUp = () => {
       <p>Already have an account?</p>
       <button onClick={() => setRedirect(true)}>Log In</button>
       {redirect ? (<Redirect to="/login" />) : null}
+      {redirectLog ? (<Redirect to="/login" />) : null}
     </Main>
   )
 }

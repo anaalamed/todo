@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { toggleCompleteAsync, deleteTodoAsync } from "../state/slices/todos.slice";
+import { toogleComplete, deleteTodo } from "../state/slices/todos.slice";
+
 import { AiOutlineDelete, AiFillEdit } from 'react-icons/ai';
 
 // let show_tools = 0;
@@ -11,10 +13,12 @@ const Todo = ({ _id, title, completed }) => {
 
     const handleComplete = () => {
         dispatch(toggleCompleteAsync({ _id: _id, completed: !completed }))
+        // dispatch(toogleComplete({ _id: _id, completed: !completed }))
     }
 
     const handleDelete = () => {
         dispatch(deleteTodoAsync({ _id: _id }));
+        // dispatch(deleteTodo({ _id: _id }));
     }
 
     return (

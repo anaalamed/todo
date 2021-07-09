@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import {getTodos} from "../../api/todos.api";
 
 export const registration  = createAsyncThunk(
 	'users/registration',
@@ -48,18 +47,6 @@ export const login  = createAsyncThunk(
 );
 
 
-// export const deleteTodoAsync = createAsyncThunk(
-//   'todos/deleteTodoAsync',
-//   async(payload) => {
-//       const response = await fetch(`http://localhost:7000/api/users/${payload._id}`, {
-//         method: "DELETE",
-//     });
-//     if (response.ok) {
-//       return {id: payload.id};
-//     }
-//   }
-// );
-
 const users_slice = createSlice({
   name: "users",
   initialState: {
@@ -73,6 +60,7 @@ const users_slice = createSlice({
   extraReducers: {
     // --------------- other Async -----------------------
     [registration.fulfilled]: (state, action) => {
+      alert("registration success");
       state.users.push(action.payload);
     },
     [login.fulfilled]: (state, action) => {
@@ -80,30 +68,12 @@ const users_slice = createSlice({
       state.loggedIn = true;
     },
 
-    // [deleteTodoAsync.fulfilled]: (state, action) => {
-    //   console.log(action.payload);
-    //   const index = state.todo.findIndex(item => item._id === action.payload._id);
-    //   console.log(index);
-    //   state.todo.splice(index,1);
-    // }
   }
 });
 
 export default users_slice.reducer;
 export const {} = users_slice.actions;
 
-// -------------- API getTodos ---------------
-// const { fetch_started, fetch_failed, data_ready } = users_slice.actions;
-// export const fetchTodos = () => async (dispatch) => {
-//   try {
-//     // dispatch(fetch_started());
-//     const data = await getTodos();
-//     if (!data) throw new Error("Quote data came back with no results");
-//     dispatch(data_ready(data));
-//   } catch (err) {
-//     dispatch(fetch_failed("The quotes data is unavailable at the moment"));
-//   }
-// };
 
 
 

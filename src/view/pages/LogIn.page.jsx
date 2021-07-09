@@ -6,7 +6,7 @@ import { login } from '../../state/slices/users.slice'
 import { Redirect } from "react-router-dom";
 
 
-const LogIn = () => {
+const LogIn = ({ setToken }) => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [redirect, setRedirect] = useState(false);

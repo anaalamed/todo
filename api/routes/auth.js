@@ -19,6 +19,7 @@ router.post('/api/user/signin', async (req, res) => {
         const {email, password} = req.body;
         const userFound = await User.findOne({email, password});
         res.json(userFound)
+        // res.send({ userFound});
     } catch {
         res.status(500).json({message: 'Could not login'});
     }

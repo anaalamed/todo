@@ -12,6 +12,9 @@ const store = configureStore({
   middleware: [...getDefaultMiddleware(), logger, save_state_locally],
   devTools: process.env.NODE_ENV !== "production"
 });
+
+// setAuthToken(localStorage.jwtToken);
+
 // Enable Webpack hot module replacement for reducers
 if (process.env.NODE_ENV !== "production" && module.hot) {
   module.hot.accept("./root.reducer", () => {

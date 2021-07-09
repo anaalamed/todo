@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Footer from "./Footer.view";
@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 
 const App = () => {
   const { loggedIn } = useSelector(state => state.users);
+
   return (
     <Box>
       <TopBar />

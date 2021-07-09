@@ -10,12 +10,12 @@ const TodoSchema = new mongoose.Schema({
         type: Boolean,
         default: () => false
     },
-    // user: {
-    //     type: ObjectId,
-    //     ref: 'user',
-    //     required: true,
-    //     index: true // save list of todos of each user. faster search in db  
-    // },
+    user: {
+        type: ObjectId,
+        ref: 'user',
+        required: true,
+        index: true // save list of todos of each user. faster search in db  
+    },
     created: {
         type: Date,
         default: Date.now

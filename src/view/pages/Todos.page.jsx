@@ -2,22 +2,34 @@ import Todo from '../Todo.view';
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodoAsync, fetchTodos } from '../../state/slices/todos.slice'
-import AddTodoForm from '../AddTodoForm.view'
+import { fetchTodos } from '../../state/slices/todos.slice'
+import AddTodoForm from '../AddTodoForm.view';
+
 
 const Todos = () => {
-    const { todo } = useSelector(state => state.todos);
+    const { todo, is_loading, error_msg } = useSelector(state => state.todos);
+    const { me } = useSelector(state => state.users);
+
     const dispatch = useDispatch();
 
     // fetch every time after change ?? 
-    useEffect(() => {
-        dispatch(fetchTodos());
-    }, []);
+    if (Object.keys(me).length !== 0) {
+        useEffect(() => {
+            dispatch(fetchTodos(me._id));
+        });
+    }
+    console.log(me);
+
+    console.log(error_msg);
+    console.log(me._id);
+
+    if (is_loading === true) return (<Main />)
+    if (error_msg) return (<p>{error_msg}</p>)
 
     return (
         <Main>
             <Title>ToDo List</Title>
-            <AddTodoForm />
+            {(Object.keys(me).length !== 0) ? (<AddTodoForm userId={me._id} />) : null}
 
             <h2>ToDo</h2>
             <Section>
