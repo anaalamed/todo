@@ -26,43 +26,6 @@ app.use(routerTodo); // all endpoints from routes
 app.use(routerAuth); // all endpoints from routes 
 
 
-
-// app.post('/api/user/signup', (req, res) => {
-//     try {
-//         const {email, password, firstName, lastName, country} = req.body;
-//         const newUser = User.create({email, password, firstName, lastName, country});
-//         res.json({message: 'sign up successfuly'});
-//     } catch {
-//         res.status(500).json({message: 'Could not sign up'});
-//     }
-// });
-
-// app.post('/api/user/signin', async (req, res) => {
-//     try {
-//         const {email, password} = req.body;
-//         const userFound = await User.findOne({email, password});
-//         res.json({
-//             _id: userFound._id,
-//             name: userFound.firstName
-//         })
-//     } catch {
-//         res.status(500).json({message: 'Could not login'});
-//     }
-// })
-
-// app.get('/api/users', (req, res) => {
-// 	User.find({ })
-// 	.then((data) => {
-// 		res.json(data);
-// 	})
-// 	.catch((error) => {
-// 		console.log('error: ', error);
-// 	})
-// });
-
-
-
-
 const port = process.env.PORT || 7000; 
 app.listen(port,() =>  {
     console.log(`Running on: http://localhost:${port}/api/todos`.green.bold);
