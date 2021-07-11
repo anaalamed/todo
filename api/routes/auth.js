@@ -25,6 +25,16 @@ router.post('/api/user/signin', async (req, res) => {
     }
 })
 
+router.get('/api/user/logout', async (req, res) => {
+    try {
+        res.json("log out successfully");
+    } catch {
+        res.status(500).json({message: 'Could not logout'});
+    }
+})
+
+
+
 router.get('/api/users', (req, res) => {
 	User.find({ })
 	.then((data) => {

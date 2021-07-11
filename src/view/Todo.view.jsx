@@ -32,7 +32,7 @@ const Todo = ({ _id, title, completed }) => {
                 <span>{title}</span>
             </span>
             <Tools>
-                <button onClick={handleDelete}><h3><AiOutlineDelete /></h3></button>
+                <button className='tools' onClick={handleDelete}><h3><AiOutlineDelete /></h3></button>
                 <button><h3><AiFillEdit /></h3></button>
             </Tools>
         </Box>
@@ -49,7 +49,12 @@ const Box = styled.div`
 `;
 
 const Tools = styled.div`
+    display: none;
     padding: 0.4rem;
+
+    ${Box}:hover & {
+        display: inline;
+    }
 `;
 
 

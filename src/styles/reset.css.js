@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   label {
-    font-size: 2rem;
+    font-size: 3rem;
     color: midnightblue;
     font-weight: bold;
   }
@@ -81,6 +81,5 @@ export const GlobalStyles = createGlobalStyle`
   form { 
     background: #aae2fc;
     border-radius: 1rem;
-
   }
 `;

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { useForm } from 'react-hook-form';
+// import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from "react-redux";
+import { logout } from '../../state/slices/users.slice';
+
 
 const Me = () => {
     const { me } = useSelector(state => state.users);
-    // console.log(me);
+    const dispatch = useDispatch();
+
+
 
     return (
         <Main>
@@ -13,7 +17,6 @@ const Me = () => {
 
             {(Object.keys(me).length === 0) ?
                 (<a href="/login">Log In</a>) :
-
 
                 (<Section>
                     <label>Name:</label>
@@ -33,14 +36,10 @@ const Me = () => {
                     <br></br>
 
                     <button>Edit Profile</button>
-                    <button>Log Out</button>
+                    <button onClick={() => dispatch(logout('aaa'))}>Log Out</button>
                 </Section>)
             }
-
         </Main>
-
-
-
     )
 }
 
@@ -79,9 +78,7 @@ const Section = styled.div`
         filter: brightness(110%);
         transition: 0.1s;
     }
-
 `;
-
 
 const Button = styled.button`
 

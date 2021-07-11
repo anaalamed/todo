@@ -20,17 +20,16 @@ const AddTodoForm = ({ userId }) => {
 
     return (
         <Main>
-            <form onSubmit={onSubmitForm}>
-                <label>ToDo:
+            <Form onSubmit={onSubmitForm}>
+                <label>ToDo:</label>
                 <Input
-                        type="text"
-                        placeholder="write here to add toDo"
-                        onChange={(event) => setValue(event.target.value)}
-                        value={value}
-                    ></Input>
-                </label>
+                    type="text"
+                    placeholder="write here to add toDo"
+                    onChange={(event) => setValue(event.target.value)}
+                    value={value}>
+                </Input>
                 <Button type="submit" ><h2><MdAdd /></h2></Button>
-            </form>
+            </Form>
         </Main>
     )
 }
@@ -38,21 +37,30 @@ const AddTodoForm = ({ userId }) => {
 export default AddTodoForm;
 
 const Main = styled.div`
-    width: 80%;
+    width: 55%;
     padding: 3rem 0;
     margin: 0 auto;
-    /* padding-left: 20%; */
-  /* border: 3px solid midnightblue; */
-  border-radius: 1rem;
+    border-radius: 1rem;
 `;
 
+const Form = styled.form`
+    width: 80%;
+    margin: 0 auto;
+`;
+
+
 const Input = styled.input`
-    width: 66%;
-    padding: 3rem 0;
+    width: 60%;
+    padding: 3rem 1rem;
+    margin-left: 3rem;
+
 `;
 
 const Button = styled.button`
     width: 10rem;
-    padding: 2rem 0;
+    padding: 1.6rem 0;
+    margin-left: 0;
+    position: relative;
+    top: 0.8rem;
 
 `;

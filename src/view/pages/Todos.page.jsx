@@ -16,12 +16,13 @@ const Todos = () => {
     if (Object.keys(me).length !== 0) {
         useEffect(() => {
             dispatch(fetchTodos(me._id));
-        }, []);
-    }
-    console.log(me);
+            // }, []);
+        });
 
-    console.log(error_msg);
-    console.log(me._id);
+    }
+    // console.log(me);
+    // console.log(error_msg);
+    // console.log(me._id);
 
     if (is_loading === true) return (<Main />)
     if (error_msg) return (<p>{error_msg}</p>)
@@ -51,20 +52,18 @@ const Todos = () => {
 export default Todos;
 
 const Main = styled.main`
-  height: 100%;
-  width: 100%;
-  padding: 7rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* background: rgb(54,25,218); */
-  /* background: linear-gradient(0deg, rgba(54,25,218,1) 18%, rgba(253,187,45,1) 100%); */
+    height: 100%;
+    width: 100%;
+    padding: 7rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 `;
 
 const Section = styled.section`
-    width: 65%;
+    width: 55%;
     margin: 1rem;
     border: 3px solid midnightblue;
     background-color: moccasin;
@@ -74,13 +73,13 @@ const Section = styled.section`
 `;
 
 const Title = styled.h1`
-  margin-bottom: 1rem;
-  color: #1114e7;
-  line-height: 1.15;
-  font-size: 3rem;
-  text-align: center;
-  background-color: white;
-  padding: 2.2rem 4.4rem;
-  border-radius: 0.4rem;
-  box-shadow: 0.2rem 0.2rem 2rem rgba(184, 187, 200, 0.3);
+    margin-bottom: 1rem;
+    color: #1114e7;
+    line-height: 1.15;
+    font-size: 3rem;
+    text-align: center;
+    background-color: white;
+    padding: 2.2rem 4.4rem;
+    border-radius: 0.4rem;
+    box-shadow: 0.2rem 0.2rem 2rem rgba(184, 187, 200, 0.3);
 `;

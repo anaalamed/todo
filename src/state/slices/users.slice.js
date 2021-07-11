@@ -27,10 +27,8 @@ export const registration  = createAsyncThunk(
 export const login  = createAsyncThunk(
 	'users/login',
 	async (payload) => {
-    console.log(payload);
+    // console.log(payload);
 		const response = await fetch('http://localhost:7000/api/user/signin', {
-		// const response = await fetch('https://anaalamed-todo.herokuapp.com/api/user/signin', {
-
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -47,6 +45,20 @@ export const login  = createAsyncThunk(
 		}
 	}
 );
+
+export const logout  = createAsyncThunk(
+  'users/logout',
+  async (payload) => {
+    const response = await fetch('http://localhost:7000/api/user/logout', {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		});
+		if (response.ok) {
+			return { message: "log out successfully" };
+		}
+  }
+)
 
 
 const users_slice = createSlice({
@@ -68,6 +80,10 @@ const users_slice = createSlice({
     [login.fulfilled]: (state, action) => {
       state.me = action.payload.user;
       state.loggedIn = true;
+    },
+    [logout.fulfilled]: (state, action) => {
+      state.me = {};
+      state.loggedIn = false;
     },
 
   }
