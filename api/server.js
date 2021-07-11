@@ -25,6 +25,10 @@ app.use(cors()); // go from port to port
 app.use(routerTodo); // all endpoints from routes 
 app.use(routerAuth); // all endpoints from routes 
 
+app.get("/*", function (req, res) {
+    res.sendFile(path.resolve(__dirname, '../build', 'index.html'));
+})
+
 
 const port = process.env.PORT || 7000; 
 app.listen(port,() =>  {
