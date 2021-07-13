@@ -9,11 +9,6 @@
     "redux toolkit",
     "react router"
   ],
-  "author": {
-    "name": "Yariv Gilad",
-    "email": "yariv.gilad@gmail.com",
-    "url": "https://www.linkedin.com/in/yarivgilad/"
-  },
   "main": "src/index.js",
   "proxy": "http://localhost:7000",
   "dependencies": {
