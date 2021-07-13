@@ -16,8 +16,8 @@ const Todos = () => {
     if (Object.keys(me).length !== 0) {
         useEffect(() => {
             dispatch(fetchTodos(me._id));
-            // }, []);
-        });
+        }, []);
+        // });
 
     }
     // console.log(me);

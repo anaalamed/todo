@@ -15,7 +15,7 @@ const AddTodoForm = ({ userId }) => {
         event.preventDefault();
         dispatch(addTodoAsync({ title: value, user: userId }));
         dispatch(addTodo({ title: value }));
-        setValue('');
+        setValue("");
     };
 
     return (

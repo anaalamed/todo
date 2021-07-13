@@ -38,6 +38,23 @@ export const addTodoAsync = createAsyncThunk(
 	}
 );
 
+export const updateTodoAsync = createAsyncThunk(
+	'todos/updateTodoAsync',
+	async (payload) => {
+    const response = await fetch(`http://localhost:7000/api/todos/${payload._id}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ title: payload.title }),
+		});
+		if (response.ok) {
+			// const todo = await response.json();
+			return { title: payload.title};
+		}
+	}
+);
+
 export const toggleCompleteAsync = createAsyncThunk(
 	'todos/completeTodoAsync',
 	async (payload) => {
@@ -111,10 +128,12 @@ const todos_slice = createSlice({
   extraReducers: {
     // --------------- other Async -----------------------
     [addTodoAsync.fulfilled]: (state, action) => {
+      console.log(state.todo);
       state.todo.push(action.payload);
     },
     [toggleCompleteAsync.fulfilled] : (state, action) => {
       console.log(action.payload);
+      console.log(state.todo);
       const index = state.todo.findIndex(item => item._id === action.payload._id);
       console.log(index);
       state.todo[index].completed = action.payload.completed;
@@ -126,9 +145,16 @@ const todos_slice = createSlice({
       state.todo.splice(index,1);
     },
     [fetchTodos.fulfilled]: (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.todo = action.payload.todos;
       state.is_loading = false;
+    },
+    [updateTodoAsync.fulfilled]: (state, action) => {
+      console.log(action.payload);
+      console.log(state.todo);
+      const index = state.todo.findIndex(item => item._id === action.payload._id);
+      console.log(index);
+      state.todo[index].title = action.payload.title;
     }
 
   }

@@ -32,6 +32,16 @@ router.patch('/api/todos/:id', async (req, res) => {
 	res.json({message: 'todo updated successfuly'});
 });
 
+router.put('/api/todos/:id', async (req, res) => {
+	const id = req.params.id;
+	const title = req.body.title;
+
+	const todo = await Todo.findOne({_id:id});
+	todo.title = title;
+	await todo.save();
+	res.json({message: 'todo updated successfuly'});
+});
+
 router.delete('/api/todos/:id', async (req, res) => {
 	const id = req.params.id;
 	const todo = await Todo.deleteOne({_id:id});

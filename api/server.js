@@ -3,11 +3,13 @@ const path = require('path');
 const cors = require('cors');
 const { json } = require('body-parser');
 const colors = require('colors'); // colors on console.log 
+// import { createProxyMiddleware, Filter, Options, RequestHandler } from 'http-proxy-middleware';
+
 
 const routerTodo = require('./routes/todos'); // routes
 const routerAuth = require('./routes/auth'); // routes
 const {connect} = require('./mongo-db'); // mongoose connection
-// require('../build/index.html')
+// require('../build')
 
 
 // mongoose connection to DB 
@@ -21,7 +23,7 @@ app.use(routerAuth); // all endpoints from routes
 
 app.use(express.static('../build'));
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'));
+    res.sendFile(path.join(__dirname, '.../build/index.html'));
   });
 
 
