@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const registration  = createAsyncThunk(
 	'users/registration',
 	async (payload) => {
-		const response = await fetch('http://localhost:7000/api/user/signup', {
+		const response = await fetch('http://anaalamed-todo.herokuapp.com/api/user/signup', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export const login  = createAsyncThunk(
 	'users/login',
 	async (payload) => {
     // console.log(payload);
-		const response = await fetch('http://localhost:7000/api/user/signin', {
+		const response = await fetch('http://anaalamed-todo.herokuapp.com/api/user/signin', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export const login  = createAsyncThunk(
 export const logout  = createAsyncThunk(
   'users/logout',
   async (payload) => {
-    const response = await fetch('http://localhost:7000/api/user/logout', {
+    const response = await fetch('http://anaalamed-todo.herokuapp.com/api/user/logout', {
 			headers: {
 				'Content-Type': 'application/json',
 			},
