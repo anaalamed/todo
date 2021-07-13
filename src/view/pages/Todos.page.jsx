@@ -12,17 +12,12 @@ const Todos = () => {
 
     const dispatch = useDispatch();
 
-    // fetch every time after change ?? 
+    // fetch on the start 
     if (Object.keys(me).length !== 0) {
         useEffect(() => {
             dispatch(fetchTodos(me._id));
         }, []);
-        // });
-
     }
-    // console.log(me);
-    // console.log(error_msg);
-    // console.log(me._id);
 
     if (is_loading === true) return (<Main />)
     if (error_msg) return (<p>{error_msg}</p>)

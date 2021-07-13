@@ -16,10 +16,11 @@ router.get('/api/todos', checkUsersHeaders, checkExistingUser, (req, res) => {
 	})
 });
 
-router.post('/api/todos', (req, res) => {
-	const todo = { title: req.body.title, id: Date.now(), completed: false, user: req.body.user };
-    Todo.create(todo);
-	res.json({message: 'todo added successfuly'});
+router.post('/api/todos', async (req, res) => {
+	const title = req.body.title;
+	const user = req.body.user;
+    const newTodo = await Todo.create({title: title, user: user, completed: false});
+	res.json(newTodo);
 });
 
 router.patch('/api/todos/:id', async (req, res) => {

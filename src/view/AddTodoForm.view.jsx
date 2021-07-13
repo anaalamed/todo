@@ -2,7 +2,6 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTodoAsync } from '../state/slices/todos.slice';
-import { addTodo } from '../state/slices/todos.slice';
 import { MdAdd } from 'react-icons/md';
 
 
@@ -14,7 +13,6 @@ const AddTodoForm = ({ userId }) => {
     const onSubmitForm = (event) => {
         event.preventDefault();
         dispatch(addTodoAsync({ title: value, user: userId }));
-        dispatch(addTodo({ title: value }));
         setValue("");
     };
 

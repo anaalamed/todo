@@ -50,7 +50,7 @@ export const updateTodoAsync = createAsyncThunk(
 		});
 		if (response.ok) {
 			// const todo = await response.json();
-			return { title: payload.title};
+			return { _id: payload._id, title: payload.title};
 		}
 	}
 );
@@ -65,10 +65,8 @@ export const toggleCompleteAsync = createAsyncThunk(
 			},
 			body: JSON.stringify({ completed: payload.completed }),
 		});
-
 		if (resp.ok) {
-			// const todo = await resp.json();
-      return {_id: payload._id};
+      return {_id: payload._id, completed: payload.completed};
 		}
 	}
 );
@@ -93,24 +91,6 @@ const todos_slice = createSlice({
     error_msg: "",
   },
   reducers: {
-    // not async reducers
-    addTodo: (state, action) => {
-      const newTodo = {
-        _id: Date.now(), // uniq
-        title: action.payload.title,
-        completed: false
-      };
-      state.todo.push(newTodo);
-    },
-    toogleComplete: (state,action) => {
-      const index = state.todo.findIndex(item => item._id === action.payload._id);
-      state.todo[index].completed = action.payload.completed;
-    },
-    deleteTodo: (state, action)=> {
-      const index = state.todo.findIndex(item => item._id === action.payload._id);
-      state.todo.splice(index,1);
-    },
-
     // --------------- fetch getTodos -------------------
     // fetch_started: (state) => {
     //   state.is_loading = true;
@@ -128,35 +108,24 @@ const todos_slice = createSlice({
   extraReducers: {
     // --------------- other Async -----------------------
     [addTodoAsync.fulfilled]: (state, action) => {
-      console.log(state.todo);
-      state.todo.push(action.payload);
+      state.todo.push(action.payload.todo);
     },
     [toggleCompleteAsync.fulfilled] : (state, action) => {
-      console.log(action.payload);
-      console.log(state.todo);
       const index = state.todo.findIndex(item => item._id === action.payload._id);
-      console.log(index);
       state.todo[index].completed = action.payload.completed;
     },
     [deleteTodoAsync.fulfilled]: (state, action) => {
-      console.log(action.payload);
       const index = state.todo.findIndex(item => item._id === action.payload._id);
-      console.log(index);
       state.todo.splice(index,1);
     },
     [fetchTodos.fulfilled]: (state, action) => {
-      // console.log(action.payload);
       state.todo = action.payload.todos;
       state.is_loading = false;
     },
     [updateTodoAsync.fulfilled]: (state, action) => {
-      console.log(action.payload);
-      console.log(state.todo);
       const index = state.todo.findIndex(item => item._id === action.payload._id);
-      console.log(index);
       state.todo[index].title = action.payload.title;
     }
-
   }
 });
 
