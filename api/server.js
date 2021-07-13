@@ -9,7 +9,7 @@ const colors = require('colors'); // colors on console.log
 const routerTodo = require('./routes/todos'); // routes
 const routerAuth = require('./routes/auth'); // routes
 const {connect} = require('./mongo-db'); // mongoose connection
-// require('../build')
+// require('../')
 
 
 // mongoose connection to DB 
@@ -21,9 +21,11 @@ app.use(cors()); // go from port to port
 app.use(routerTodo); // all endpoints from routes 
 app.use(routerAuth); // all endpoints from routes 
 
-app.use(express.static('../build'));
+
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '.../build/index.html'));
+    res.sendFile(path.join(__dirname+'/../client/build/index.html'));
   });
 
 
