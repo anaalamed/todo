@@ -25,7 +25,7 @@ const Todos = () => {
     return (
         <Main>
             <Title>ToDo List</Title>
-            {(Object.keys(me).length !== 0) ? (<AddTodoForm userId={me._id} />) : null}
+            {(Object.keys(me).length !== 0) ? (<AddTodoForm userId={me._id} />) : (<a href="/login">Log In</a>)}
 
             <h2>ToDo</h2>
             <Section>

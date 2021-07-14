@@ -35,7 +35,7 @@ const Me = () => {
                     <h2>{me.country}</h2>
                     <br></br>
 
-                    <button>Edit Profile</button>
+                    {/* <button>Edit Profile</button> */}
                     <button onClick={() => dispatch(logout('aaa'))}>Log Out</button>
                 </Section>)
             }

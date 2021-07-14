@@ -14,8 +14,12 @@ const TopBar = () => {
         <SLink to="/todo">ToDo</SLink>
       </div>
       <Section>
-        <SLink to="/signup">Sign Up</SLink>
-        <SLink to="/login">Log In</SLink>
+        {(user === 'guest') ? (
+          <>
+            <SLink to="/login">Log In</SLink>
+            <SLink to="/signup">Sign Up</SLink>
+          </>
+        ) : (null)}
         <Hello to="/me">Hi, {user}</Hello>
         <Logo src="logo.jpeg"></Logo>
       </Section>

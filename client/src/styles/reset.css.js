@@ -82,4 +82,9 @@ export const GlobalStyles = createGlobalStyle`
     background: #aae2fc;
     border-radius: 1rem;
   }
+
+  a {
+    font-size: large;
+    padding: 1rem;
+  }
 `;

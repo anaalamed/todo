@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import { useForm } from 'react-hook-form';
 import { useDispatch } from "react-redux";
@@ -6,13 +6,13 @@ import countries from '../../data/countries';
 import { registration } from '../../state/slices/users.slice'
 import { Redirect } from "react-router-dom";
 
-
 const SignUp = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const password = useRef('');
+
   const [redirect, setRedirect] = useState(false);
   const [redirectLog, setRedirectLog] = useState(false);
-
 
   const email_regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})&/;
@@ -46,7 +46,7 @@ const SignUp = () => {
     cpassword: {
       required: "Password is required",
       minLength: "Password is too short",
-      // pattern: "Passwords don't match!"
+      validate: "The passwords do not match!"
     }
   };
   const get_error_msg = (errors, error_messages, field_name) => {
@@ -71,6 +71,15 @@ const SignUp = () => {
     console.log(data);
     dispatch(registration(data));
     setRedirectLog(true);
+  }
+
+  const onValidate = (value) => {
+    console.log("boom");
+    // console.log(value);
+    const match = value === password.current;
+    console.log(password.current);
+    console.log(match);
+    // value => value === password.current || "the passwords..."
   }
 
   return (
@@ -143,9 +152,11 @@ const SignUp = () => {
           name="password"
           type='password'
           placeholder="Password"
+          ref={password}
           {...register('password', {
-            required: true, minLength: 8,
-            //  pattern: strongRegex
+            required: true,
+            minLength: 8,
+            pattern: strongRegex
           })}
         // error_styled={errors.password}
         ></Input>
@@ -159,7 +170,13 @@ const SignUp = () => {
           name="cpassword"
           type='password'
           placeholder="Confirm Password"
-          {...register('cpassword', { required: true, minLength: 8 })}
+          // {...register('cpassword', { required: true, minLength: 8 })}
+          {...register('cpassword', {
+            required: true,
+            // minLength: 8, 
+            validate: onValidate
+          })}
+
           error_styled={errors.password}
         ></Input>
         <Error show={errors.cpassword}>
@@ -250,13 +267,13 @@ const Select = styled.select`
 `;
 
 const Textarea = styled.textarea`
-  background: ${({ error_styled }) => (error_styled ? "pink" : "white")};
-  border-radius: 1rem;
-  width: 100%;
-  font-size: 1rem;
-  padding: 1rem;
-  font-family: Arial;
-`;
+//   background: ${({ error_styled }) => (error_styled ? "pink" : "white")};
+//   border-radius: 1rem;
+//   width: 100%;
+//   font-size: 1rem;
+//   padding: 1rem;
+//   font-family: Arial;
+// `;
 
 const WraperSelect = styled.div`
   select {

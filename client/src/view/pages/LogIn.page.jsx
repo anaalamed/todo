@@ -44,6 +44,13 @@ const LogIn = ({ setToken }) => {
       <p>No account yet?</p>
       <button onClick={() => setRedirect(true)}>Sign Up</button>
       {redirect ? (<Redirect to="/signup" />) : null}
+
+      <Test>
+        <h1>test account</h1>
+        <p>email: test@gmail.com</p>
+        <p>password: 123456</p>
+      </Test>
+
     </Main>
   )
 }
@@ -97,4 +104,12 @@ const Button = styled.button`
   position: relative;
   left: 50%;
   transform: translate(-50%, 15%);
+`;
+
+const Test = styled.div`
+  margin-top: 10rem;
+  padding-left: 3rem;
+  background-color: rgba(253,187,45,1);
+  border: 3px solid midnightblue;
+  border-radius: 1rem;
 `;
