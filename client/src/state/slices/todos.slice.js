@@ -7,7 +7,7 @@ import {getTodos} from "../../api/todos.api";
 export const fetchTodos = createAsyncThunk(
 	'todos/fetchTodos',
 	async (id) => {
-		const response = await fetch('http://anaalamed-todo.herokuapp.com/api/todos', {
+		const response = await fetch('https://anaalamed-todo.herokuapp.com/api/todos', {
 			headers: {
 				'Content-Type': 'application/json',
         'user': id
@@ -23,7 +23,7 @@ export const fetchTodos = createAsyncThunk(
 export const addTodoAsync = createAsyncThunk(
 	'todos/addTodoAsync',
 	async (payload) => {
-		const response = await fetch('http://anaalamed-todo.herokuapp.com/api/todos', {
+		const response = await fetch('https://anaalamed-todo.herokuapp.com/api/todos', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export const addTodoAsync = createAsyncThunk(
 export const updateTodoAsync = createAsyncThunk(
 	'todos/updateTodoAsync',
 	async (payload) => {
-    const response = await fetch(`http://anaalamed-todo.herokuapp.com/api/todos/${payload._id}`, {
+    const response = await fetch(`https://anaalamed-todo.herokuapp.com/api/todos/${payload._id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export const updateTodoAsync = createAsyncThunk(
 export const toggleCompleteAsync = createAsyncThunk(
 	'todos/completeTodoAsync',
 	async (payload) => {
-		const resp = await fetch(`http://anaalamed-todo.herokuapp.com/api/todos/${payload._id}`, {
+		const resp = await fetch(`https://anaalamed-todo.herokuapp.com/api/todos/${payload._id}`, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export const toggleCompleteAsync = createAsyncThunk(
 export const deleteTodoAsync = createAsyncThunk(
   'todos/deleteTodoAsync',
   async(payload) => {
-      const response = await fetch(`http://anaalamed-todo.herokuapp.com/api/todos/${payload._id}`, {
+      const response = await fetch(`https://anaalamed-todo.herokuapp.com/api/todos/${payload._id}`, {
         method: "DELETE",
     });
     if (response.ok) {
