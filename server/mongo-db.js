@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 function connect(mongoURI) {
+	console.log('Connecting to MongoDB ', mongoURI);
      mongoose.connect(mongoURI, 
     {
         useNewUrlParser: true,

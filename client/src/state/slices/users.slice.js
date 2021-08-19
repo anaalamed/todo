@@ -38,7 +38,6 @@ export const login  = createAsyncThunk(
         password: payload.password
       })
 		});
-
 		if (response.ok) {
 			const user = await response.json();
 			return { user };

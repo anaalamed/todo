@@ -71,13 +71,13 @@ const Section = styled.div`
     background: #aae2fc;
     border-radius: 1rem;
     width: 55%;
-  padding: 4rem;
-  border-radius: 1rem;
-  border: 3px solid midnightblue;
-  &:hover {
-        filter: brightness(110%);
-        transition: 0.1s;
-    }
+    padding: 4rem;
+    border-radius: 1rem;
+    border: 3px solid midnightblue;
+    &:hover {
+            filter: brightness(110%);
+            transition: 0.1s;
+        }
 `;
 
 const Button = styled.button`

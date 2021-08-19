@@ -9,13 +9,18 @@ import { Redirect } from "react-router-dom";
 const SignUp = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const password = useRef('');
+  // const password = useRef({});
+  // const [password, setPassword] = useState('');
+
+
 
   const [redirect, setRedirect] = useState(false);
   const [redirectLog, setRedirectLog] = useState(false);
 
   const email_regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})&/;
+  // const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})&/;
+  const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
 
   const error_messages = {
     first_name: {
@@ -41,12 +46,12 @@ const SignUp = () => {
     password: {
       required: "Password is required",
       minLength: "Password is too short",
-      pattern: "Password is not strong! \n Must contain at least 1 lowercase, 1 uppercase, 1 numeric, 1 special character "
+      pattern: "Minimum 6 characters, at least one letter and one number"
     },
     cpassword: {
       required: "Password is required",
       minLength: "Password is too short",
-      validate: "The passwords do not match!"
+      pattern: "The passwords do not match!"
     }
   };
   const get_error_msg = (errors, error_messages, field_name) => {
@@ -73,13 +78,14 @@ const SignUp = () => {
     setRedirectLog(true);
   }
 
-  const onValidate = (value) => {
+  const onValidate = () => {
     console.log("boom");
     // console.log(value);
-    const match = value === password.current;
-    console.log(password.current);
-    console.log(match);
+    // const match = value === password.current;
+    // console.log(password);
+    // console.log(match);
     // value => value === password.current || "the passwords..."
+    get_error_msg(errors, error_messages, 'cpassword');
   }
 
   return (
@@ -152,11 +158,14 @@ const SignUp = () => {
           name="password"
           type='password'
           placeholder="Password"
-          ref={password}
+          // ref={password}
+          // value={password}
+          // onChange={(event) => setPassword(event.target.value)}
+
           {...register('password', {
             required: true,
-            minLength: 8,
-            pattern: strongRegex
+            // minLength: 6,
+            // pattern: passwordRegex
           })}
         // error_styled={errors.password}
         ></Input>
@@ -176,12 +185,10 @@ const SignUp = () => {
             // minLength: 8, 
             validate: onValidate
           })}
-
-          error_styled={errors.password}
+        // error_styled={errors.password}
         ></Input>
         <Error show={errors.cpassword}>
           {get_error_msg(errors, error_messages, "cpassword")}
-
         </Error>
         <br></br>
 
