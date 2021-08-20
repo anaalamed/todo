@@ -56,9 +56,11 @@ const Input = styled.input`
 
 const Button = styled.button`
     width: 10rem;
-    padding: 1.6rem 0;
+    padding: 1.5rem 0;
     margin-left: 0;
     position: relative;
-    top: 0.8rem;
-
+    top: 0.85rem;
+    border-radius: 0;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 `;

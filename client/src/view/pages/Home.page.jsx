@@ -1,12 +1,21 @@
 import React from "react";
 import styled from "styled-components";
+import '../../styles/animation.css'
 
 const Home = () => {
+  var bubbles = [];
+  for (var i = 0; i < 100; i++) {
+    bubbles.push(<div className="bubble x">X</div>);
+    bubbles.push(<div className="bubble v">V</div>);
+  }
+
+
   return (
-    <Main>
-      <Title>ToDo List</Title>
-      <img src="https://www.oberlo.com/media/1605011858-to-do-list.jpg?fit=max&fm=webp&w=1824" />
-      {/* <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_2164,w_3845,x_0,y_259/v1554918405/shape/mentalfloss/94735-istock-863607936.jpg?itok=ZYfiTd6J" /> */}
+    <Main className="aa">
+      {/* <Title>ToDo List</Title> */}
+      {/* <img src="https://www.oberlo.com/media/1605011858-to-do-list.jpg?fit=max&fm=webp&w=1824" /> */}
+      <img className="home" src="https://images2.minutemediacdn.com/image/upload/c_crop,h_2164,w_3845,x_0,y_259/v1554918405/shape/mentalfloss/94735-istock-863607936.jpg?itok=ZYfiTd6J" />
+      <div className="bottom-particles">{bubbles}</div>
     </Main>
   );
 };

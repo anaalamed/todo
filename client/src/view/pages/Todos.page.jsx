@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTodos } from '../../state/slices/todos.slice'
 import AddTodoForm from '../AddTodoForm.view';
+import '../../styles/animation.css'
+
 
 
 const Todos = () => {
@@ -19,28 +21,38 @@ const Todos = () => {
         }, []);
     }
 
+    var bubbles = [];
+    for (var i = 0; i < 100; i++) {
+        bubbles.push(<div className="bubble x">X</div>);
+        bubbles.push(<div className="bubble v">V</div>);
+    }
+
     if (is_loading === true) return (<Main />)
     if (error_msg) return (<p>{error_msg}</p>)
 
     return (
-        <Main>
-            <Title>ToDo List</Title>
-            {(Object.keys(me).length !== 0) ? (<AddTodoForm userId={me._id} />) : (<a href="/login">Log In</a>)}
+        <>
+            <Main>
+                <Title>ToDo List</Title>
+                {(Object.keys(me).length !== 0) ? (<AddTodoForm userId={me._id} />) : (<a href="/login">Log In</a>)}
 
-            <h2>ToDo</h2>
-            <Section>
-                {todo.filter(item => item.completed === false).map(i =>
-                    (<Todo key={i._id} {...i}></Todo>)
-                )}
-            </Section>
+                <h2>ToDo</h2>
+                <Section>
+                    {todo.filter(item => item.completed === false).map(i =>
+                        (<Todo key={i._id} {...i}></Todo>)
+                    )}
+                </Section>
 
-            <h2>Done</h2>
-            <Section>
-                {todo.filter(item => item.completed === true).map(i =>
-                    (<Todo key={i._id} {...i}></Todo>)
-                )}
-            </Section>
-        </Main>
+                <h2>Done</h2>
+                <Section>
+                    {todo.filter(item => item.completed === true).map(i =>
+                        (<Todo key={i._id} {...i}></Todo>)
+                    )}
+                </Section>
+
+            </Main>
+            <div className="bottom-particles">{bubbles}</div>
+        </>
     )
 }
 
@@ -55,6 +67,8 @@ const Main = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
+
 `;
 
 const Section = styled.section`

@@ -30,6 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "sass": "sass --watch src/styles/animation.scss:src/styles/animation.css",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

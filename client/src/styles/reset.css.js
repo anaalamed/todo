@@ -16,9 +16,12 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 
-  img {
+  .home {
     width: 70%;
-    /* margin: 0 auto; */
+    z-index: 1;
+    border-radius: 1rem;
+    border: 1px dotted midnightblue;
+    /* padding: 3rem; */
   }
 
   label {
@@ -32,7 +35,8 @@ export const GlobalStyles = createGlobalStyle`
   font-size: 1rem;
   padding: 1.5rem 0.5rem;
   margin: 1rem 0;
-  border-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
   font-family: Arial;
   opacity: 0.8;
   &:hover {

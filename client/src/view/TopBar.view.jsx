@@ -45,6 +45,8 @@ const Header = styled.header`
   align-items: center;
   display: flex;
   justify-content: space-between;
+  z-index: 100;
+
 `;
 
 const SLink = styled(Link)`
